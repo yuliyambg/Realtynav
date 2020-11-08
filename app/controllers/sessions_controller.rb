@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
     erb :'users/login'
   end
 
-
   post '/login' do
     if params["username"].empty? || params["password"].empty?
       @error = "Username and Password can't be blank"

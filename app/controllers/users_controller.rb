@@ -5,8 +5,6 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    #username and password cannot be blank
-    # username can not already exist
     user = User.new(params)
     # if user.username.empty? || user.password.empty?
     # user cannot save if validation fails

@@ -1,17 +1,7 @@
 class PropertiesController < ApplicationController
-  # before do
-  #   require_login
-  #
-  # end
-  #
-  # #CREATE
+
+  # CREATE
   get '/properties/new' do
-    # if User.find_by(id: session[:user_id])
-    # if logged_in?
-    #   erb :'recipes/new'
-    # else
-    #   redirect '/login'
-    #   require_login
     erb :'/properties/new'
   end
   #
@@ -49,8 +39,8 @@ class PropertiesController < ApplicationController
       redirect '/properties'
     end
   end
-  #
-  # #EDIT
+
+  #EDIT
   get '/properties/:id/edit' do
     # require_login
 
@@ -63,8 +53,8 @@ class PropertiesController < ApplicationController
       erb :'/properties/index'
       end
   end
-  #
-  # #UPDATE
+
+  #UPDATE
   patch '/properties/:id' do
 
     @property = Property.find(params[:id])
@@ -81,7 +71,7 @@ class PropertiesController < ApplicationController
       erb :'/properties/edit'
     end
   end
-  #
+
   #DESTROY
   delete '/properties/:id' do
     @property = Property.find(params[:id])

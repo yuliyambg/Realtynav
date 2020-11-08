@@ -9,15 +9,16 @@
   </div>
   <%end%>
 </div>
-<h2>$<%=@property.price%></h2>
-<h2><%=@property.str_address %></h2>
-<h2><%=@property.city %> <%=@property.state %> </h2>
-<h2><%=@property.zip_code %></h2>
+<h3>Price: $<%=@property.price%></h3>
+<h3>Address: <%=@property.str_address %></h3>
+<h3><%=@property.city %> <%=@property.state %> </h3>
+<h3><%=@property.zip_code %></h3>
 
 
 <% if current_user == @property.user %>
-  <a href="/properties/<%= @property.id %>/edit">Edit</a>
+  <button><a href="/properties/<%= @property.id %>/edit">Edit</a></button>
 <% end %>
+<br>
 
 <form action="/properties/<%=@property.id %>" method="post" >
   <input type="hidden" name="_method" value="delete">

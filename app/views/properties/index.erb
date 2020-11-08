@@ -1,15 +1,18 @@
 <p><%= @error %></p>
 <div class="container mt-4">
+
+  <% if current_user%>
+        <a href="/properties/new">List New Property</a>
+    <%else %>
+        <a href="/login">List New Property</a>
+    <%end%>
+
   <h1 class="text-center">Properties</h1>
 
   <% @properties.each_slice(3) do |properties| %>
     <div class="row mt-4 mb-4">
     <% properties.each do |property| %>
         <div class="col-sm-6 col-lg-4 card">
-<!--      <%#=property.images.first %><br>-->
-
-<!--      <div class="card">-->
-
         <img class="img-properties card-img-top"  src="<%= property.images.first.image_url %>" />
           <div class="card-body">
             <h5 class="card-title"><%=property.str_address %>, <%=property.city %>, <%=property.state %></h5>
