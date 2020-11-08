@@ -15,7 +15,7 @@
         <div class="col-sm-6 col-lg-4 card">
         <img class="img-properties card-img-top"  src="<%= property.images.first.image_url %>" />
           <div class="card-body">
-            <h5 class="card-title"><%=property.str_address %>, <%=property.city %>, <%=property.state %></h5>
+            <h5 class="card-title"><%=property.str_address %>, <%=property.city %>, <%=property.state %>, <%=property.zip_code %></h5>
               <h6 class="card-text">$<%= property.price %></h6>
               <a href="/properties/<%= property.id %>" class="btn btn-primary">Go to House</a>
           </div>
