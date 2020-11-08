@@ -1,0 +1,27 @@
+<div class="container">
+<% @property.images.each_slice(3) do |images| %>
+  <div class="row">
+  <% images.each do |image|%>
+      <div class="col-sm-6 col-lg-4">
+        <img class="img-properties" src="<%= image.image_url %>" >
+      </div>
+<% end %>
+  </div>
+  <%end%>
+</div>
+<h2>$<%=@property.price%></h2>
+<h2><%=@property.str_address %></h2>
+<h2><%=@property.city %> <%=@property.state %> </h2>
+<h2><%=@property.zip_code %></h2>
+
+
+<% if current_user == @property.user %>
+  <a href="/properties/<%= @property.id %>/edit">Edit</a>
+<% end %>
+
+<form action="/properties/<%=@property.id %>" method="post" >
+  <input type="hidden" name="_method" value="delete">
+  <% if @property.user == current_user %>
+    <button type="submit">Delete Property</button>
+  <%end %>
+</form>
