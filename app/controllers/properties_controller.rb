@@ -18,7 +18,6 @@ class PropertiesController < ApplicationController
       redirect '/properties'
     else
       flash[:errors] = property.errors.full_messages
-      # @error = "Data invalid. Please try again."
       erb :'/properties/new'
     end
   end
