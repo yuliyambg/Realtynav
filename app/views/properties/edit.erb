@@ -1,0 +1,21 @@
+<h1>Edit a Property</h1>
+<!--<p><%#= @error %></p>-->
+  <form action="/properties/<%=@property.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+  <label>Price</label>
+  <input class="form-control form-control-sm" type="integer" name="property[price]" value="<%=@property.price%>">
+  <label>Street Address</label>
+  <input class="form-control form-control-sm" type="text" name="property[str_address]" value="<%=@property.str_address%>" >
+  <label>City</label>
+  <input class="form-control form-control-sm" type="text" name="property[city]" value="<%=@property.city%>">
+  <label>State</label>
+  <input class="form-control form-control-sm" type="text" name="property[state]" value="<%=@property.state%>">
+  <label>Zip Code</label>
+  <input class="form-control form-control-sm" type="integer" name="property[zip_code]" value="<%=@property.zip_code%>">
+  <label>Image URL</label>
+  <input class="form-control form-control-sm" type="text" name="image1[image_url]" >
+  <input class="form-control form-control-sm" type="text" name="image2[image_url]" >
+  <input class="form-control form-control-sm" type="text" name="image3[image_url]" >
+
+  <Button class="btn btn-primary" type="submit">Edit Property</button>
+</form>

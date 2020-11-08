@@ -58,29 +58,29 @@ class PropertiesController < ApplicationController
   end
   #
   # #EDIT
-  # get '/recipes/:id/edit' do
-  #   # require_login
-  #   @recipe = Recipe.find(params[:id])
-  #   erb :'/recipes/edit'
-  # end
+  get '/properties/:id/edit' do
+    # require_login
+    @property = Property.find(params[:id])
+    erb :'/properties/edit'
+  end
   #
   # #UPDATE
-  # patch '/recipes/:id' do
-  #   @recipe = Recipe.find(params[:id])
-  #   if !params["recipe"]["title"].empty? &&  !params["recipe"]["preparation"].empty?
-  #     @recipe.update(params["recipe"])
-  #     redirect "/recipes/#{params[:id]}"
-  #   else
-  #     @error = "Data invalid. Please try again."
-  #     erb :'/recipes/edit'
-  #   end
-  # end
+  patch '/properties/:id' do
+    @property = Property.find(params[:id])
+    if !params["property"]["price"].empty? &&  !params["property"]["str_address"].empty?
+      @property.update(params["property"])
+      redirect "/properties/#{params[:id]}"
+    else
+      @error = "Data invalid. Please try again."
+      erb :'/properties/edit'
+    end
+  end
   #
-  # #DESTROY
-  # delete '/recipes/:id' do
-  #   @recipe = Recipe.find(params[:id])
-  #   @recipe.destroy
-  #   redirect '/recipes'
-  # end
+  #DESTROY
+  delete '/properties/:id' do
+    @property = Property.find(params[:id])
+    @property.destroy
+    redirect '/properties'
+  end
 
 end

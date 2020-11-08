@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     # user cannot save if validation fails
     if user.save
       session[:user_id] = user.id
-      redirect '/recipes'
+      redirect '/properties'
     else
       @error = "Invalid Credentials"
       erb :'users/signup'

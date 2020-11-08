@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
 
         # log in
         session[:user_id] = user.id
-        redirect '/recipes'
+        redirect '/properties'
       else
         @error = "Account not found"
         erb :'users/login'
