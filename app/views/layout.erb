@@ -25,14 +25,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <%# if logged_in? %>
+        <% if logged_in? %>
           <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="/properties">Properties</a>
           <a class="nav-item nav-link" href="/logout">Log Out</a>
-        <%#else%>
+        <%else%>
+          <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="/properties">Properties</a>
           <a class="nav-item nav-link" href="/signup">Sign Up</a>
           <a class="nav-item nav-link" href="/login">Log In</a>
-        <%#end %>
+        <%end %>
       </div>
     </div>
   </nav>

@@ -16,20 +16,14 @@ class PropertiesController < ApplicationController
   end
   #
   post '/properties' do
-    # binding.pry
     property = Property.new(params[:property])
+    property.user_id = session[:user_id]
     image1 = Image.new(params[:image1])
     image2 = Image.new(params[:image2])
     image3 = Image.new(params[:image3])
     property.images << [image1,image2,image3]
-    # User.find_by(id: session[:user_id]).recipes.build(params)
-
-    #validation/authorization edit
-    # recipe = current_user.properties
-    # if !recipe.title.empty? &&  !recipe.preparation.empty?
 
     if property.save
-      # recipe.save
       redirect '/properties'
     else
       @error = "Data invalid. Please try again."
@@ -39,17 +33,16 @@ class PropertiesController < ApplicationController
 
   #READ
   get '/properties' do
-    # if User.find_by(id: session[:user_id])
-    # require_login
     @properties = Property.all
     erb :'properties/index'
   end
 
   #SHOW
   get '/properties/:id' do
-    # if User.find_by(id: session[:user_id])
-    # require_login
     @property = Property.find_by(id: params[:id])
+
+    # puts @property
+    # puts @property.images
     if @property
       erb :'properties/show'
     else
@@ -60,15 +53,28 @@ class PropertiesController < ApplicationController
   # #EDIT
   get '/properties/:id/edit' do
     # require_login
+
     @property = Property.find(params[:id])
+    if @property.user_id == session[:user_id]
     erb :'/properties/edit'
+    else
+      @properties = Property.all
+      @error = "Not authorized"
+      erb :'/properties/index'
+      end
   end
   #
   # #UPDATE
   patch '/properties/:id' do
+
     @property = Property.find(params[:id])
+
     if !params["property"]["price"].empty? &&  !params["property"]["str_address"].empty?
+
+      @property.images.destroy_all
+      @property.images.build([params["image1"], params["image2"],params["image3"]])
       @property.update(params["property"])
+
       redirect "/properties/#{params[:id]}"
     else
       @error = "Data invalid. Please try again."
