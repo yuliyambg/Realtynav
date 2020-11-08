@@ -14,9 +14,11 @@ class PropertiesController < ApplicationController
     property.images << [image1,image2,image3]
 
     if property.save
+      flash[:message] = "successfully created"
       redirect '/properties'
     else
-      @error = "Data invalid. Please try again."
+      flash[:errors] = property.errors.full_messages
+      # @error = "Data invalid. Please try again."
       erb :'/properties/new'
     end
   end
@@ -30,9 +32,6 @@ class PropertiesController < ApplicationController
   #SHOW
   get '/properties/:id' do
     @property = Property.find_by(id: params[:id])
-
-    # puts @property
-    # puts @property.images
     if @property
       erb :'properties/show'
     else
