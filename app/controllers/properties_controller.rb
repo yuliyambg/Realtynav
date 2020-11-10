@@ -2,7 +2,11 @@ class PropertiesController < ApplicationController
 
   # CREATE
   get '/properties/new' do
+    if current_user
     erb :'/properties/new'
+    else
+      redirect '/login'
+    end
   end
   #
   post '/properties' do
