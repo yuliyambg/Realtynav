@@ -16,8 +16,7 @@
   <input class="form-control form-control-sm" type="text" name="image1[image_url]" value="<%=@property.images[0].image_url %>" >
   <input class="form-control form-control-sm" type="text" name="image2[image_url]" value="<%=@property.images[1].image_url %>">
   <input class="form-control form-control-sm" type="text" name="image3[image_url]" value="<%=@property.images[2].image_url %>">
-    <%# if @property.user_id == session[:user_id] %>
-      <% if logged_in? %>
+    <% if @property.user_id == session[:user_id] %>
   <Button class="btn btn-primary" type="submit">Edit Property</button>
     <% end %>
 </form>

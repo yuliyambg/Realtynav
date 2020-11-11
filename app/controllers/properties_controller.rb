@@ -45,12 +45,10 @@ class PropertiesController < ApplicationController
 
   #EDIT
   get '/properties/:id/edit' do
-    # require_login
 
     @property = Property.find(params[:id])
-    # if @property.user_id == session[:user_id]
-      if logged_in?
-    erb :'/properties/edit'
+    if @property.user_id == session[:user_id]
+      erb :'/properties/edit'
     else
       @properties = Property.all
       @error = "Not authorized"
