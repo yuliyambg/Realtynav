@@ -1,4 +1,11 @@
 <p><%= @error %></p>
+<!--<p><%#= @message %></p>-->
+<div>
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+</div>
+
 <div class="container mt-4">
 
   <% if current_user%>

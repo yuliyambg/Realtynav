@@ -10,6 +10,7 @@ class PropertiesController < ApplicationController
   end
   #
   post '/properties' do
+    # binding.pry
     property = Property.new(params[:property])
     property.user_id = session[:user_id]
     image1 = Image.new(params[:image1])
@@ -21,7 +22,7 @@ class PropertiesController < ApplicationController
       flash[:message] = "successfully created"
       redirect '/properties'
     else
-      flash[:errors] = property.errors.full_messages
+      flash[:errors] = property.errors.full_messages.to_sentence
       erb :'/properties/new'
     end
   end
@@ -47,7 +48,8 @@ class PropertiesController < ApplicationController
     # require_login
 
     @property = Property.find(params[:id])
-    if @property.user_id == session[:user_id]
+    # if @property.user_id == session[:user_id]
+      if logged_in?
     erb :'/properties/edit'
     else
       @properties = Property.all
