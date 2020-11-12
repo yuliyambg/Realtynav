@@ -23,7 +23,8 @@ class PropertiesController < ApplicationController
       redirect '/properties'
     else
       flash[:errors] = property.errors.full_messages.to_sentence
-      erb :'/properties/new'
+      # erb :'/properties/new'
+      redirect '/properties/new'
     end
   end
 
